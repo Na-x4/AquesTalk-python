@@ -7,6 +7,12 @@ Python Wrapper for AquesTalk (Old License)
 
 AquesTalkのライセンス変更については[公式ブログ][blog.a-quest]を参照してください。
 
+Installation
+------------
+```
+pip install git+https://github.com/Na-x4/AquesTalk-python.git
+```
+
 Usage
 -----
 ```
