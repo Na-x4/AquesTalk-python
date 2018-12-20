@@ -86,6 +86,34 @@ class AquesTalk:
         AquesTalkError
             音声波形の生成時にエラーが発生した場合
         """
+        wav = wave.open(io.BytesIO(self.synthe_raw(koe, speed)), 'rb')
+        return wav
+
+    def synthe_raw(self, koe, speed=100):
+        """
+        音声記号列から音声波形を生成します。
+
+        Parameters
+        ----------
+        koe : str
+            音声記号列
+        speed : int
+            発話速度[%]
+
+            - 50-300の間で指定
+            - デフォルト：100
+            - 値を大きく設定するほど、速くなる
+
+        Returns
+        -------
+        bytes
+            WAVフォーマットのデータ
+
+        Raises
+        ------
+        AquesTalkError
+            音声波形の生成時にエラーが発生した場合
+        """
         c_wav, size = self._synthe(koe, speed)
         if not c_wav:
             raise AquesTalkError(size)
@@ -93,9 +121,7 @@ class AquesTalk:
         wav_raw = c_wav[:size]
         self._freewave(c_wav)
 
-        wav = wave.open(io.BytesIO(wav_raw), 'rb')
-
-        return wav
+        return wav_raw
 
     @property
     def voice_type(self):
