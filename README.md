@@ -10,7 +10,7 @@ AquesTalkのライセンス変更については[公式ブログ][blog.a-quest]�
 Installation
 ------------
 ```
-pip install git+https://github.com/Na-x4/AquesTalk-python.git
+pip install AquesTalk-python
 ```
 
 Usage
